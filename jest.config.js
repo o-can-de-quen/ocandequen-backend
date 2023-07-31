@@ -9,5 +9,6 @@ module.exports = {
 
   // this enables us to use tsconfig-paths with jest
   modulePaths: [compilerOptions.baseUrl],
+  modulePathIgnorePatterns: ["<rootDir>/dist/"],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
 };

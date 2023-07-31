@@ -1,5 +1,4 @@
 import express from "express";
-import { google } from "googleapis";
 import { Client, Language } from "@googlemaps/google-maps-services-js";
 import EnvSingleton from "@utils/env.util";
 
@@ -21,16 +20,16 @@ async function get(
   try {
     const reviews = await client.placeDetails({
       params: {
-        place_id: googleApiKey,
+        place_id: googlePlaceId,
         fields: ["reviews"],
         language: Language.es,
-        key: googlePlaceId,
+        key: googleApiKey,
       },
     });
 
     res.json(reviews.data.result.reviews);
   } catch (err: any) {
-    console.error(`Error while getting programming languages`, err.message);
+    console.error(err.message);
     next(err);
   }
 }

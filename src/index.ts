@@ -1,20 +1,18 @@
 import express from "express";
 import bodyParser from "body-parser";
-import programmingLanguagesRouter from "@routes/programmingLanguages.route";
-import testRouter from "@routes/test.route";
+import reviewController from "@routes/example";
+import reviewRouter from "@routes/review.route";
+import cors from "cors";
 
 const app = express();
 const port = Number(process.env.PORT) || 8080;
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-app.get("/", (req: any, res: any) => {
-  res.json({ ocdq: "Hello world!" });
-});
-
-app.use("/programming-languages", programmingLanguagesRouter);
-app.use("/test", testRouter);
+app.get("/", (req: any, res: any) => res.json({ ocdq: "Hello world!" }));
+app.use("/example", reviewController);
+app.use("/review", reviewRouter);
 
 /* Error handler middleware */
 app.use((err: any, req: any, res: any, next: any) => {

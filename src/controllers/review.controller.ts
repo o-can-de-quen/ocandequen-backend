@@ -12,7 +12,7 @@ async function get(
 ) {
   const Env = EnvSingleton.getInstance();
   const googleApiKey = Env.get("GOOGLE_API_KEY");
-  const googlePlaceId = Env.get("GOOGLE_API_KEY");
+  const googlePlaceId = Env.get("GOOGLE_PLACE_ID");
 
   if (!googleApiKey || !googlePlaceId) {
     throw new Error();
